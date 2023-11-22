@@ -9,13 +9,11 @@ class Solution {
                 storey++;
             }else if(num < 5){ // 5 미만 시 빼기
                 answer += num;
-            }else if(num == 5){ // 5인 경우 앞자리 숫자에 따라서 변경
-                if(storey % 10 >= 5){
+            }else if(storey % 10 >= 5) { // 5인 경우 앞자리 숫자에 따라서 변경
                     answer += (10 - num);
                     storey++;
-                }else{
-                    answer += num;
-                }
+            }else{
+                answer += num;
             }
         }
         return answer;
