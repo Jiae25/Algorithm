@@ -1,39 +1,42 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
 
-        int[] dwarfArr = new int[10]; // 1 ~ 9 인덱스를 사용
-        int sum = 0; // 9명 키의 총 합을 저장할 변수
-        for(int i = 1; i < 10; i++){ // 배열에 9명의 키 저장
+        List<Integer> dwarfList = new ArrayList<>();
+        int sum = 0;
+
+        for(int i = 0; i < 9; i++){
             int height = Integer.parseInt(br.readLine());
-            dwarfArr[i] = height;
-            sum += height; // 9명 키의 합
+            dwarfList.add(height);
+            sum += height;
         }
 
-        Arrays.sort(dwarfArr); // 배열 오름차순 정렬
-
-        for(int i = 1; i < 10; i++){
-            for(int j = i + 1; j < 10; j++){
-                int sevenDwarf = sum - (dwarfArr[i] + dwarfArr[j]);
-                if(sevenDwarf == 100){
-                    for(int k = 1; k < 10; k++){
-                        if(k == i || k == j){
-                            continue;
-                        }else{
-                            sb.append(dwarfArr[k] + "\n");
-                        }
-                    }
-                    System.out.println(sb.delete(sb.length() - 1, sb.length()));
-                    return;
-                }else if(sevenDwarf < 100){ // 오름차순으로 정렬해둔 배열이기 때문에 더 계산할 필요가 없음
-                    break;
+        int except1 = 0;
+        int except2 = 0;
+        for(int i = 0; i < 8; i++){ // 2명을 골라야하니까 i는 8까지
+            for(int j = i + 1; j < 9; j++){
+                if(sum - (dwarfList.get(i) + dwarfList.get(j)) == 100){
+                    except1 = dwarfList.get(i);
+                    except2 = dwarfList.get(j);
                 }
             }
         }
+
+        Collections.sort(dwarfList);
+
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < 9; i++){
+            if(dwarfList.get(i) == except1 || dwarfList.get(i) == except2){
+                continue;
+            }
+            sb.append(dwarfList.get(i) + "\n");
+        }
+        System.out.println(sb.toString());
     }
 }
