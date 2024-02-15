@@ -45,16 +45,6 @@ public class Main {
         System.out.println(max);
     }
 
-    private static void view() {
-        for(int i = 0; i < N; i++){
-            for(int j = 0; j < N; j++){
-                System.out.print(board[i][j]);
-            }
-            System.out.println();
-        }
-    }
-
-
     private static void swapCandy(int x, int y, int dir) {
         if(dir == 0){ // 가로 swap
             char temp = board[x][y];
@@ -73,7 +63,7 @@ public class Main {
             int len = 1; // 다음줄 len 초기화
             for(int j = 0; j < N-1; j++){
                 if(board[i][j] != board[i][j+1]){
-                    len = 1;
+                    len = 1; // 같은 줄에서 인접한 사탕 색이 다를 경우 len 초기화
                     continue;
                 }
                 len++;
