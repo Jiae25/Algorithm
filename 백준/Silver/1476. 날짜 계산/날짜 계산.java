@@ -23,7 +23,7 @@ public class Main {
             }
         }
 
-        System.out.println(E); 
+        System.out.println(E);
 
         br.close();
     }
