@@ -29,7 +29,7 @@ public class Main {
         for(int i = 0; i < N; i++){
             for(int j = 0; j < M; j++){
                 visited[i][j] = true;
-                dfs(i, j, 1, map[i][j]); // 나중에 매개변수 변경하고 해봐야지
+                dfs(i, j, 1, map[i][j]);
                 visited[i][j] = false;
                 checkException(i, j);
             }
