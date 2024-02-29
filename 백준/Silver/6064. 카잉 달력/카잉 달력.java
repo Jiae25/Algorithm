@@ -33,7 +33,7 @@ public class Main {
                     }
 
                 }
-                if (temp == min) { // 초기값으로 돌아왔을 경우 표현X
+                if (temp == min) { // 초기값으로 돌아왔을 경우 또는 구하려는 해를 지난 경우 <x:y>로 표현될 수 없는 해이다.
                     cnt = -1;
                     break;
                 }
