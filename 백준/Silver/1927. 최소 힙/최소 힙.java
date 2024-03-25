@@ -1,26 +1,30 @@
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.PriorityQueue;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine()); // 연산의 개수
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < N; i++){
+
+        int N = Integer.parseInt(br.readLine());
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>(); // 최소힙
+
+        for(int i = 0; i < N; i++){
             int x = Integer.parseInt(br.readLine());
-            if(x == 0){ // 가장 작은 값 출력 후 값 제거
-                if(minHeap.isEmpty()){
-                    sb.append("0\n");
+            if(x == 0){
+                if(pq.isEmpty()) {
+                    sb.append(0).append("\n");
                 }else{
-                    sb.append(minHeap.poll()).append("\n");
+                    sb.append(pq.poll()).append("\n");
                 }
-            }else { // x 추가
-                minHeap.add(x);
+
+            }else{
+                pq.offer(x);
             }
         }
         System.out.println(sb.toString());
+        br.close();
     }
 }
