@@ -16,7 +16,7 @@ public class Main {
         while(true){
             int n = Integer.parseInt(br.readLine());
 
-            if(n == 0){ // n이 0일때 종료
+            if(n == 0){
                 break;
             }
 
